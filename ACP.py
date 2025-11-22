@@ -15,18 +15,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import warnings
-import base64
-from pathlib import Path
 warnings.filterwarnings('ignore')
-
-# Fonction pour encoder l'image de fond en base64
-def get_base64_image(image_path):
-    """Encode une image en base64 pour l'utiliser dans le CSS"""
-    try:
-        with open(image_path, "rb") as img_file:
-            return base64.b64encode(img_file.read()).decode()
-    except FileNotFoundError:
-        return None
 
 # Configuration de la page
 st.set_page_config(
@@ -36,17 +25,16 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# URL de l'image depuis GitHub
-# Remplacez par le lien RAW de votre image sur GitHub
-github_image_url = "https://i.postimg.cc/vTp3B3LV/IMG-6442.jpg"
+# URL de l'image Postimages
+postimg_url = "https://i.postimg.cc/vTp3B3LV/IMG-6442.jpg"
 
 # Style CSS personnalisé avec image de fond du trophée Champions League
 st.markdown(f"""
     <style>
     /* Image de fond - Trophée Champions League */
     .stApp {{
-        background: linear-gradient(rgba(10, 25, 47, 0.88), rgba(18, 35, 60, 0.90)),
-                    url('{github_image_url}');
+        background: linear-gradient(rgba(10, 25, 47, 0.85), rgba(18, 35, 60, 0.88)),
+                    url('{postimg_url}');
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
@@ -1500,5 +1488,3 @@ def main():
 # POINT D'ENTRÉE
 if __name__ == "__main__":
     main()
-
-
