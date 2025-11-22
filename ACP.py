@@ -33,7 +33,7 @@ st.markdown(f"""
     <style>
     /* Image de fond - Trophée Champions League */
     .stApp {{
-        background: linear-gradient(rgba(10, 25, 47, 0.85), rgba(18, 35, 60, 0.88)),
+        background: linear-gradient(rgba(10, 25, 47, 0.70), rgba(18, 35, 60, 0.75)),
                     url('{postimg_url}');
         background-size: cover;
         background-position: center;
@@ -1488,4 +1488,5 @@ def main():
 # POINT D'ENTRÉE
 if __name__ == "__main__":
     main()
+
 
