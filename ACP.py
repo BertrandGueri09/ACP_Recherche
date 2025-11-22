@@ -31,7 +31,7 @@ st.markdown("""
     /* Image de fond - Trophée Champions League */
     .stApp {
         background: linear-gradient(rgba(10, 25, 47, 0.88), rgba(18, 35, 60, 0.90)),
-                    url('https://github.com/BertrandGueri09/ACP_Recherche/blob/main/IMG_6442.JPG');
+                    url("https://images.unsplash.com/photo-1543351611-58f69d7c1781?w=1920");
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
@@ -1485,6 +1485,7 @@ def main():
 # POINT D'ENTRÉE
 if __name__ == "__main__":
     main()
+
 
 
 
