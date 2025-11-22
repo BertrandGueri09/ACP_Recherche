@@ -38,7 +38,7 @@ st.set_page_config(
 
 # URL de l'image depuis GitHub
 # Remplacez par le lien RAW de votre image sur GitHub
-github_image_url = "https://github.com/BertrandGueri09/ACP_Recherche/blob/main/IMG_6442.JPG"
+github_image_url = "https://i.postimg.cc/vTp3B3LV/IMG-6442.jpg"
 
 # Style CSS personnalisé avec image de fond du trophée Champions League
 st.markdown(f"""
@@ -1500,4 +1500,5 @@ def main():
 # POINT D'ENTRÉE
 if __name__ == "__main__":
     main()
+
 
