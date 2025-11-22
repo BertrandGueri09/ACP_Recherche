@@ -26,7 +26,7 @@ st.set_page_config(
 )
 
 # URL de l'image Postimages
-postimg_url = "https://i.postimg.cc/vTp3B3LV/IMG-6442.jpg"
+postimg_url = "//i.postimg.cc/vTp3B3LV/IMG-6442.jpg"
 
 # Style CSS personnalisé avec image de fond du trophée Champions League
 st.markdown(f"""
@@ -1488,3 +1488,4 @@ def main():
 # POINT D'ENTRÉE
 if __name__ == "__main__":
     main()
+
