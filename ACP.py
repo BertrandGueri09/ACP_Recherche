@@ -25,21 +25,79 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# URL de l'image Postimages
-postimg_url = "https://i.postimg.cc/vTp3B3LV/IMG-6442.jpg"
-
 # Style CSS personnalisé avec image de fond du trophée Champions League
-st.markdown(f"""
+# Utilisation d'un dégradé élégant avec effet de stade
+st.markdown("""
     <style>
+    /* Animation de fond Champions League */
+    @keyframes fadeGradient {
+        0%, 100% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+    }
+    
     /* Image de fond - Trophée Champions League */
-    .stApp {{
-        background: linear-gradient(rgba(10, 25, 47, 0.85), rgba(18, 35, 60, 0.88)),
-                    url('{postimg_url}');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-    }}
+    .stApp {
+        background: 
+            linear-gradient(135deg, 
+                rgba(0, 20, 60, 0.92) 0%,
+                rgba(0, 40, 100, 0.90) 25%,
+                rgba(0, 51, 153, 0.88) 50%,
+                rgba(0, 40, 100, 0.90) 75%,
+                rgba(0, 20, 60, 0.92) 100%
+            ),
+            radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.05) 0%, transparent 50%),
+            linear-gradient(180deg, #000d1a 0%, #001a33 50%, #000d1a 100%);
+        background-size: 200% 200%, 100% 100%, 100% 100%;
+        animation: fadeGradient 20s ease infinite;
+        position: relative;
+    }
+    
+    /* Effet de lumière de stade */
+    .stApp::before {
+        content: '';
+        position: fixed;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: 
+            radial-gradient(circle at 30% 30%, rgba(255, 215, 0, 0.08) 0%, transparent 25%),
+            radial-gradient(circle at 70% 70%, rgba(0, 102, 204, 0.08) 0%, transparent 25%),
+            radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.03) 0%, transparent 40%);
+        pointer-events: none;
+        z-index: 0;
+        animation: rotate 60s linear infinite;
+    }
+    
+    @keyframes rotate {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+    
+    /* Lignes de terrain */
+    .stApp::after {
+        content: '';
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        width: 800px;
+        height: 800px;
+        border: 2px solid rgba(255, 215, 0, 0.12);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        z-index: 0;
+        box-shadow: 
+            0 0 80px rgba(255, 215, 0, 0.15),
+            inset 0 0 80px rgba(255, 215, 0, 0.08);
+    }
+    
+    /* Conteneur principal */
+    .main {
+        padding: 1.5rem 2rem;
+        background-color: rgba(255, 255, 255, 0.03);
+        border-radius: 15px;
+    }
     
     /* Conteneur principal */
     .main {
