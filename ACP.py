@@ -43,8 +43,7 @@ st.markdown("""
                 rgba(0, 40, 100, 0.90) 25%,
                 rgba(0, 51, 153, 0.88) 50%,
                 rgba(0, 40, 100, 0.90) 75%,
-                rgba(0, 20, 60, 0.92) 100%
-            ),
+                rgba(0, 20, 60, 0.92) 100%,
             radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.05) 0%, transparent 50%),
             linear-gradient(180deg, #000d1a 0%, #001a33 50%, #000d1a 100%);
         background-size: 200% 200%, 100% 100%, 100% 100%;
@@ -1546,3 +1545,4 @@ def main():
 # POINT D'ENTRÉE
 if __name__ == "__main__":
     main()
+
