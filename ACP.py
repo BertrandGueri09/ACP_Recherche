@@ -25,67 +25,17 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Style CSS personnalisé avec fond Champions League
+# Style CSS personnalisé avec image de fond
 st.markdown("""
     <style>
-    /* Animation de fond Champions League */
-    @keyframes fadeGradient {
-        0%, 100% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-    }
-    
-    @keyframes rotate {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
-    }
-    
-    /* Fond principal avec dégradé animé */
+    /* Image de fond - Stade Champions League libre de droits */
     .stApp {
-        background: linear-gradient(135deg, 
-            rgba(0, 20, 60, 0.95) 0%,
-            rgba(0, 40, 100, 0.92) 25%,
-            rgba(0, 51, 153, 0.90) 50%,
-            rgba(0, 40, 100, 0.92) 75%,
-            rgba(0, 20, 60, 0.95) 100%
-        ),
-        radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.05) 0%, transparent 50%),
-        linear-gradient(180deg, #000d1a 0%, #001a33 50%, #000d1a 100%);
-        background-size: 200% 200%, 100% 100%, 100% 100%;
-        animation: fadeGradient 20s ease infinite;
-        position: relative;
-    }
-    
-    /* Effet de lumière de stade */
-    .stApp::before {
-        content: '';
-        position: fixed;
-        top: -50%;
-        left: -50%;
-        width: 200%;
-        height: 200%;
-        background: radial-gradient(circle at 30% 30%, rgba(255, 215, 0, 0.08) 0%, transparent 25%),
-                    radial-gradient(circle at 70% 70%, rgba(0, 102, 204, 0.08) 0%, transparent 25%),
-                    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.03) 0%, transparent 40%);
-        pointer-events: none;
-        z-index: 0;
-        animation: rotate 60s linear infinite;
-    }
-    
-    /* Cercle central comme un terrain */
-    .stApp::after {
-        content: '';
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        width: 800px;
-        height: 800px;
-        border: 2px solid rgba(255, 215, 0, 0.12);
-        border-radius: 50%;
-        transform: translate(-50%, -50%);
-        pointer-events: none;
-        z-index: 0;
-        box-shadow: 0 0 80px rgba(255, 215, 0, 0.15),
-                    inset 0 0 80px rgba(255, 215, 0, 0.08);
+        background: linear-gradient(rgba(10, 25, 47, 0.90), rgba(18, 35, 60, 0.90)),
+                    url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkyMCIgaGVpZ2h0PSIxMDgwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxkZWZzPjxsaW5lYXJHcmFkaWVudCBpZD0iZ3JhZCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3R5bGU9InN0b3AtY29sb3I6IzAwMjA0MDtzdG9wLW9wYWNpdHk6MSIgLz48c3RvcCBvZmZzZXQ9IjUwJSIgc3R5bGU9InN0b3AtY29sb3I6IzAwMzM2NjtzdG9wLW9wYWNpdHk6MSIgLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiMwMDIwNDA7c3RvcC1vcGFjaXR5OjEiIC8+PC9saW5lYXJHcmFkaWVudD48cGF0dGVybiBpZD0icGF0dGVybiIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiPjxsaW5lIHgxPSIwIiB5MT0iMCIgeDI9IjEwMCIgeTI9IjEwMCIgc3Ryb2tlPSIjMDA0NDg4IiBzdHJva2Utd2lkdGg9IjEiIG9wYWNpdHk9IjAuMyIvPjxsaW5lIHgxPSIxMDAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEwMCIgc3Ryb2tlPSIjMDA0NDg4IiBzdHJva2Utd2lkdGg9IjEiIG9wYWNpdHk9IjAuMyIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIvPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjcGF0dGVybikiLz48Y2lyY2xlIGN4PSI5NjAiIGN5PSI1NDAiIHI9IjMwMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDA2NmNjIiBzdHJva2Utd2lkdGg9IjMiIG9wYWNpdHk9IjAuMiIvPjxjaXJjbGUgY3g9Ijk2MCIgY3k9IjU0MCIgcj0iMTAwIiBmaWxsPSJub25lIiBzdHJva2U9IiMwMDY2Y2MiIHN0cm9rZS13aWR0aD0iMiIgb3BhY2l0eT0iMC4zIi8+PHJlY3QgeD0iNDAwIiB5PSIyNDAiIHdpZHRoPSIxMTIwIiBoZWlnaHQ9IjYwMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDA4OGZmIiBzdHJva2Utd2lkdGg9IjIiIG9wYWNpdHk9IjAuMiIvPjwvc3ZnPg==');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
     }
     
     /* Conteneur principal */
@@ -93,6 +43,17 @@ st.markdown("""
         padding: 1.5rem 2rem;
         background-color: rgba(255, 255, 255, 0.03);
         border-radius: 15px;
+    }
+    
+    /* En-tête principal */
+    .main-header {
+        background: linear-gradient(135deg, rgba(0, 51, 153, 0.95), rgba(0, 102, 204, 0.95));
+        padding: 35px 25px;
+        border-radius: 15px;
+        text-align: center;
+        border: 3px solid rgba(255, 215, 0, 0.7);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+        margin-bottom: 35px;
     }
     
     /* Titres principaux */
@@ -135,7 +96,7 @@ st.markdown("""
         border-left: 4px solid #ffd700;
     }
     
-    /* Métriques */
+    /* Métriques avec espacement */
     .stMetric {
         background: linear-gradient(135deg, rgba(0, 51, 153, 0.95), rgba(0, 102, 204, 0.95));
         padding: 20px;
@@ -159,6 +120,11 @@ st.markdown("""
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
     }
     
+    .stMetric [data-testid="stMetricDelta"] {
+        color: #90EE90 !important;
+        font-weight: 700 !important;
+    }
+    
     /* Texte général */
     .stMarkdown, p, label, .stSelectbox label, .stMultiSelect label, .stSlider label, .stTextInput label {
         color: #ffffff !important;
@@ -167,7 +133,7 @@ st.markdown("""
         font-size: 15px !important;
     }
     
-    /* DataFrames */
+    /* DataFrames et tableaux */
     .dataframe {
         background-color: rgba(255, 255, 255, 0.97) !important;
         border-radius: 10px;
@@ -191,7 +157,7 @@ st.markdown("""
         font-size: 13px !important;
     }
     
-    /* Sidebar */
+    /* Sidebar avec espacement */
     [data-testid="stSidebar"] {
         background: linear-gradient(180deg, rgba(0, 20, 60, 0.97), rgba(0, 40, 100, 0.97));
         border-right: 4px solid rgba(255, 215, 0, 0.6);
@@ -214,7 +180,12 @@ st.markdown("""
         font-weight: 600 !important;
     }
     
-    /* Boutons */
+    [data-testid="stSidebar"] .stButton {
+        margin-top: 20px !important;
+        margin-bottom: 10px !important;
+    }
+    
+    /* Boutons avec espacement */
     .stButton > button {
         background: linear-gradient(135deg, #003399, #0066cc);
         color: white;
@@ -236,7 +207,7 @@ st.markdown("""
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
     }
     
-    /* Onglets */
+    /* Onglets avec espacement amélioré */
     .stTabs [data-baseweb="tab-list"] {
         background: rgba(0, 30, 80, 0.85);
         border-radius: 12px;
@@ -273,6 +244,11 @@ st.markdown("""
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     }
     
+    /* Contenu des onglets avec espacement */
+    .stTabs [data-baseweb="tab-panel"] {
+        padding-top: 25px;
+    }
+    
     /* Input fields */
     .stTextInput input, .stSelectbox select, .stMultiSelect select {
         background-color: rgba(255, 255, 255, 0.95) !important;
@@ -289,7 +265,11 @@ st.markdown("""
         margin: 20px 0;
     }
     
-    /* Checkbox et radio */
+    .stSlider [data-baseweb="slider"] {
+        background: rgba(255, 255, 255, 0.3);
+    }
+    
+    /* Checkbox et radio avec espacement */
     .stCheckbox, .stRadio {
         margin: 15px 0;
     }
@@ -301,7 +281,7 @@ st.markdown("""
         font-size: 15px !important;
     }
     
-    /* Messages */
+    /* Messages d'info/succès/erreur avec espacement */
     .stAlert {
         background-color: rgba(255, 255, 255, 0.96) !important;
         border-radius: 10px;
@@ -313,12 +293,51 @@ st.markdown("""
         font-weight: 600 !important;
     }
     
-    /* Séparateur */
+    .stSuccess {
+        background-color: rgba(144, 238, 144, 0.97) !important;
+        color: #000000 !important;
+        border-left: 6px solid #008000 !important;
+    }
+    
+    .stWarning {
+        background-color: rgba(255, 215, 0, 0.97) !important;
+        color: #000000 !important;
+        border-left: 6px solid #ff8c00 !important;
+    }
+    
+    .stError {
+        background-color: rgba(255, 99, 71, 0.97) !important;
+        color: #000000 !important;
+        border-left: 6px solid #dc143c !important;
+    }
+    
+    .stInfo {
+        background-color: rgba(173, 216, 230, 0.97) !important;
+        color: #000000 !important;
+        border-left: 6px solid #0066cc !important;
+    }
+    
+    /* Expander */
+    .streamlit-expanderHeader {
+        background: rgba(42, 82, 152, 0.8) !important;
+        color: #ffffff !important;
+        border-radius: 8px;
+        font-weight: 700 !important;
+        padding: 15px !important;
+        margin: 15px 0 !important;
+    }
+    
+    /* Séparateur avec espacement */
     hr {
         border: 0;
         height: 3px;
         background: linear-gradient(to right, transparent, rgba(255, 215, 0, 0.7), transparent);
         margin: 35px 0;
+    }
+    
+    /* Colonnes avec espacement */
+    .row-widget.stHorizontal {
+        gap: 20px;
     }
     
     /* Download button */
@@ -333,6 +352,22 @@ st.markdown("""
         margin: 10px 0;
     }
     
+    .stDownloadButton > button:hover {
+        background: linear-gradient(135deg, #00ff80, #00ffaa);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    }
+    
+    /* Footer avec espacement */
+    .footer {
+        background: linear-gradient(135deg, rgba(0, 30, 80, 0.95), rgba(0, 51, 153, 0.95));
+        padding: 25px;
+        border-radius: 12px;
+        border-top: 4px solid #ffd700;
+        margin-top: 50px;
+        box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.3);
+    }
+    
     /* Plotly graphs */
     .js-plotly-plot {
         background-color: rgba(255, 255, 255, 0.97) !important;
@@ -340,6 +375,30 @@ st.markdown("""
         box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
         margin: 25px 0;
         padding: 10px;
+    }
+    
+    /* Caption avec espacement */
+    .css-1kyxreq, .stCaptionContainer {
+        color: #e8e8e8 !important;
+        font-style: italic;
+        font-weight: 500 !important;
+        margin-top: 8px !important;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+    }
+    
+    /* File uploader */
+    .stFileUploader {
+        margin: 20px 0;
+    }
+    
+    /* Multiselect */
+    .stMultiSelect {
+        margin: 20px 0;
+    }
+    
+    /* Selectbox */
+    .stSelectbox {
+        margin: 20px 0;
     }
     </style>
     """, unsafe_allow_html=True)
@@ -425,6 +484,7 @@ def main():
     # En-tête principal
     st.title("Analyse en Composantes Principales (ACP)")
     st.markdown("### Performance historique UEFA Champions League (1955-2023)")
+    st.markdown('</div>', unsafe_allow_html=True)
     
     # Sidebar
     st.sidebar.header("Configuration")
@@ -499,12 +559,12 @@ def main():
     
     # ONGLETS PRINCIPAUX
     tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
-        "📊 Données", 
-        "📈 Analyse ACP", 
-        "🎯 Cercle des Corrélations",
-        "⚽ Projection des Équipes",
-        "📉 Contributions",
-        "🏆 Classements"
+        "Données", 
+        "Analyse ACP", 
+        "Cercle des Corrélations",
+        "Projection des Équipes",
+        "Contributions",
+        "Classements"
     ])
     
     # ONGLET 1: DONNÉES
@@ -668,15 +728,28 @@ def main():
                 line_color="red",
                 line_width=2,
                 annotation_text="Critère de Kaiser",
-                annotation_position="right"
+                annotation_position="right",
+                annotation=dict(font=dict(size=12, color='red', family='Arial Black'))
             )
             fig_scree.update_layout(
-                title="Scree Plot - Valeurs Propres",
+                title=dict(
+                    text="Scree Plot - Valeurs Propres",
+                    font=dict(size=16, color='#003399', family='Arial Black')
+                ),
                 xaxis_title="Composante",
                 yaxis_title="Valeur propre",
                 height=450,
                 plot_bgcolor='rgba(255, 255, 255, 0.97)',
-                paper_bgcolor='rgba(255, 255, 255, 0.97)'
+                paper_bgcolor='rgba(255, 255, 255, 0.97)',
+                font=dict(color='#000000', size=12, family='Arial'),
+                xaxis=dict(
+                    gridcolor='rgba(200, 200, 200, 0.5)',
+                    title_font=dict(size=13, color='#003399', family='Arial Black')
+                ),
+                yaxis=dict(
+                    gridcolor='rgba(200, 200, 200, 0.5)',
+                    title_font=dict(size=13, color='#003399', family='Arial Black')
+                )
             )
             st.plotly_chart(fig_scree, use_container_width=True)
         
@@ -698,15 +771,28 @@ def main():
                 line_color="red",
                 line_width=2,
                 annotation_text="80% de variance",
-                annotation_position="right"
+                annotation_position="right",
+                annotation=dict(font=dict(size=12, color='red', family='Arial Black'))
             )
             fig_var.update_layout(
-                title="Variance Expliquée Cumulée",
+                title=dict(
+                    text="Variance Expliquée Cumulée",
+                    font=dict(size=16, color='#003399', family='Arial Black')
+                ),
                 xaxis_title="Composante",
                 yaxis_title="Variance cumulée (%)",
                 height=450,
                 plot_bgcolor='rgba(255, 255, 255, 0.97)',
-                paper_bgcolor='rgba(255, 255, 255, 0.97)'
+                paper_bgcolor='rgba(255, 255, 255, 0.97)',
+                font=dict(color='#000000', size=12, family='Arial'),
+                xaxis=dict(
+                    gridcolor='rgba(200, 200, 200, 0.5)',
+                    title_font=dict(size=13, color='#003399', family='Arial Black')
+                ),
+                yaxis=dict(
+                    gridcolor='rgba(200, 200, 200, 0.5)',
+                    title_font=dict(size=13, color='#003399', family='Arial Black')
+                )
             )
             st.plotly_chart(fig_var, use_container_width=True)
         
@@ -795,15 +881,46 @@ def main():
             ))
         
         fig.update_layout(
-            title=f"Cercle des Corrélations (CP1: {pca.explained_variance_ratio_[0]*100:.1f}% vs CP2: {pca.explained_variance_ratio_[1]*100:.1f}%)",
-            xaxis_title=f"CP1 ({pca.explained_variance_ratio_[0]*100:.1f}%)",
-            yaxis_title=f"CP2 ({pca.explained_variance_ratio_[1]*100:.1f}%)",
-            xaxis=dict(range=[-1.2, 1.2], constrain='domain'),
-            yaxis=dict(range=[-1.2, 1.2], scaleanchor='x', scaleratio=1),
+            title=dict(
+                text=f"Cercle des Corrélations (CP1: {pca.explained_variance_ratio_[0]*100:.1f}% vs CP2: {pca.explained_variance_ratio_[1]*100:.1f}%)",
+                font=dict(size=18, color='#003399', family='Arial Black'),
+                x=0.5,
+                xanchor='center'
+            ),
+            xaxis_title=dict(
+                text=f"CP1 ({pca.explained_variance_ratio_[0]*100:.1f}%)",
+                font=dict(size=14, color='#003399', family='Arial Black')
+            ),
+            yaxis_title=dict(
+                text=f"CP2 ({pca.explained_variance_ratio_[1]*100:.1f}%)",
+                font=dict(size=14, color='#003399', family='Arial Black')
+            ),
+            xaxis=dict(
+                range=[-1.2, 1.2], 
+                constrain='domain',
+                gridcolor='rgba(200, 200, 200, 0.5)',
+                zerolinecolor='rgba(100, 100, 100, 0.8)',
+                zerolinewidth=2
+            ),
+            yaxis=dict(
+                range=[-1.2, 1.2], 
+                scaleanchor='x', 
+                scaleratio=1,
+                gridcolor='rgba(200, 200, 200, 0.5)',
+                zerolinecolor='rgba(100, 100, 100, 0.8)',
+                zerolinewidth=2
+            ),
             height=750,
             showlegend=True,
+            legend=dict(
+                bgcolor='rgba(255, 255, 255, 0.97)',
+                bordercolor='#003399',
+                borderwidth=2,
+                font=dict(size=11, color='#000000')
+            ),
             plot_bgcolor='rgba(255, 255, 255, 0.97)',
-            paper_bgcolor='rgba(255, 255, 255, 0.97)'
+            paper_bgcolor='rgba(255, 255, 255, 0.97)',
+            font=dict(color='#000000', size=12, family='Arial')
         )
         
         st.plotly_chart(fig, use_container_width=True)
@@ -917,7 +1034,23 @@ def main():
         fig.update_layout(
             height=750,
             plot_bgcolor='rgba(255, 255, 255, 0.97)',
-            paper_bgcolor='rgba(255, 255, 255, 0.97)'
+            paper_bgcolor='rgba(255, 255, 255, 0.97)',
+            font=dict(color='#000000', size=12, family='Arial'),
+            title=dict(
+                font=dict(size=18, color='#003399', family='Arial Black'),
+                x=0.5,
+                xanchor='center'
+            ),
+            xaxis=dict(
+                gridcolor='rgba(200, 200, 200, 0.5)',
+                zerolinecolor='rgba(100, 100, 100, 0.5)',
+                title_font=dict(size=14, color='#003399', family='Arial Black')
+            ),
+            yaxis=dict(
+                gridcolor='rgba(200, 200, 200, 0.5)',
+                zerolinecolor='rgba(100, 100, 100, 0.5)',
+                title_font=dict(size=14, color='#003399', family='Arial Black')
+            )
         )
         
         st.plotly_chart(fig, use_container_width=True)
@@ -946,6 +1079,23 @@ def main():
             q4 = len(projection_df[projection_df['Quadrant'] == 'Q4'])
             st.metric("Quadrant 4 (+-)", q4)
             st.caption("CP1 élevé, CP2 faible")
+        
+        st.markdown("---")
+        st.subheader("Recherche d'équipe spécifique")
+        equipe_recherche = st.selectbox("Sélectionner une équipe", sorted(teams_names))
+        
+        if equipe_recherche:
+            equipe_data = projection_df[projection_df['Equipe'] == equipe_recherche].iloc[0]
+            
+            col1, col2, col3, col4 = st.columns(4)
+            with col1:
+                st.metric("CP1", f"{equipe_data['CP1']:.3f}")
+            with col2:
+                st.metric("CP2", f"{equipe_data['CP2']:.3f}")
+            with col3:
+                st.metric("Quadrant", equipe_data['Quadrant'])
+            with col4:
+                st.metric("Distance origine", f"{equipe_data['Distance']:.3f}")
     
     # ONGLET 5: CONTRIBUTIONS
     with tab5:
@@ -971,6 +1121,162 @@ def main():
             contrib_df.round(2).sort_values('Contribution CP1 (%)', ascending=False),
             use_container_width=True
         )
+        
+        st.markdown("---")
+        st.subheader("Visualisation des contributions")
+        
+        col1, col2 = st.columns(2)
+        
+        with col1:
+            fig_cp1 = go.Figure()
+            fig_cp1.add_trace(go.Bar(
+                x=variables_selectionnees,
+                y=contributions[:, 0],
+                marker=dict(
+                    color=contributions[:, 0],
+                    colorscale='Blues',
+                    showscale=False,
+                    line=dict(color='#003399', width=2)
+                ),
+                text=contributions[:, 0].round(1),
+                textposition='outside',
+                texttemplate='%{text}%',
+                textfont=dict(size=12, color='#000000', family='Arial Black'),
+                hovertemplate='<b>%{x}</b><br>Contribution: %{y:.2f}%<extra></extra>'
+            ))
+            fig_cp1.update_layout(
+                title=dict(
+                    text=f"Contributions à CP1 ({pca.explained_variance_ratio_[0]*100:.1f}%)",
+                    font=dict(size=16, color='#003399', family='Arial Black')
+                ),
+                xaxis_title="Variables",
+                yaxis_title="Contribution (%)",
+                height=450,
+                xaxis_tickangle=-45,
+                plot_bgcolor='rgba(255, 255, 255, 0.97)',
+                paper_bgcolor='rgba(255, 255, 255, 0.97)',
+                font=dict(color='#000000', size=11, family='Arial'),
+                xaxis=dict(
+                    gridcolor='rgba(200, 200, 200, 0.5)',
+                    title_font=dict(size=12, color='#003399', family='Arial Black')
+                ),
+                yaxis=dict(
+                    gridcolor='rgba(200, 200, 200, 0.5)',
+                    title_font=dict(size=12, color='#003399', family='Arial Black')
+                )
+            )
+            st.plotly_chart(fig_cp1, use_container_width=True)
+        
+        with col2:
+            fig_cp2 = go.Figure()
+            fig_cp2.add_trace(go.Bar(
+                x=variables_selectionnees,
+                y=contributions[:, 1] if contributions.shape[1] > 1 else np.zeros(len(variables_selectionnees)),
+                marker=dict(
+                    color=contributions[:, 1] if contributions.shape[1] > 1 else np.zeros(len(variables_selectionnees)),
+                    colorscale='Oranges',
+                    showscale=False,
+                    line=dict(color='#ff6600', width=2)
+                ),
+                text=(contributions[:, 1] if contributions.shape[1] > 1 else np.zeros(len(variables_selectionnees))).round(1),
+                textposition='outside',
+                texttemplate='%{text}%',
+                textfont=dict(size=12, color='#000000', family='Arial Black'),
+                hovertemplate='<b>%{x}</b><br>Contribution: %{y:.2f}%<extra></extra>'
+            ))
+            fig_cp2.update_layout(
+                title=dict(
+                    text=f"Contributions à CP2 ({pca.explained_variance_ratio_[1]*100:.1f}%)",
+                    font=dict(size=16, color='#003399', family='Arial Black')
+                ),
+                xaxis_title="Variables",
+                yaxis_title="Contribution (%)",
+                height=450,
+                xaxis_tickangle=-45,
+                plot_bgcolor='rgba(255, 255, 255, 0.97)',
+                paper_bgcolor='rgba(255, 255, 255, 0.97)',
+                font=dict(color='#000000', size=11, family='Arial'),
+                xaxis=dict(
+                    gridcolor='rgba(200, 200, 200, 0.5)',
+                    title_font=dict(size=12, color='#003399', family='Arial Black')
+                ),
+                yaxis=dict(
+                    gridcolor='rgba(200, 200, 200, 0.5)',
+                    title_font=dict(size=12, color='#003399', family='Arial Black')
+                )
+            )
+            st.plotly_chart(fig_cp2, use_container_width=True)
+        
+        st.markdown("---")
+        st.subheader("Contributions cumulées")
+        
+        contrib_df['Contribution Totale (%)'] = contrib_df['Contribution CP1 (%)'] + contrib_df['Contribution CP2 (%)']
+        contrib_sorted = contrib_df.sort_values('Contribution Totale (%)', ascending=False)
+        
+        fig_cumul = go.Figure()
+        fig_cumul.add_trace(go.Bar(
+            x=contrib_sorted['Variable'],
+            y=contrib_sorted['Contribution CP1 (%)'],
+            name='CP1',
+            marker=dict(color='#0066cc', line=dict(color='#003399', width=1)),
+            hovertemplate='<b>%{x}</b><br>CP1: %{y:.2f}%<extra></extra>'
+        ))
+        fig_cumul.add_trace(go.Bar(
+            x=contrib_sorted['Variable'],
+            y=contrib_sorted['Contribution CP2 (%)'],
+            name='CP2',
+            marker=dict(color='#ff9933', line=dict(color='#ff6600', width=1)),
+            hovertemplate='<b>%{x}</b><br>CP2: %{y:.2f}%<extra></extra>'
+        ))
+        
+        fig_cumul.update_layout(
+            title=dict(
+                text="Contributions Cumulées (CP1 + CP2)",
+                font=dict(size=16, color='#003399', family='Arial Black')
+            ),
+            xaxis_title="Variables",
+            yaxis_title="Contribution (%)",
+            barmode='stack',
+            height=450,
+            xaxis_tickangle=-45,
+            plot_bgcolor='rgba(255, 255, 255, 0.97)',
+            paper_bgcolor='rgba(255, 255, 255, 0.97)',
+            font=dict(color='#000000', size=12, family='Arial'),
+            legend=dict(
+                bgcolor='rgba(255, 255, 255, 0.97)',
+                bordercolor='#003399',
+                borderwidth=2,
+                font=dict(size=11, color='#000000', family='Arial Black')
+            ),
+            xaxis=dict(
+                gridcolor='rgba(200, 200, 200, 0.5)',
+                title_font=dict(size=12, color='#003399', family='Arial Black')
+            ),
+            yaxis=dict(
+                gridcolor='rgba(200, 200, 200, 0.5)',
+                title_font=dict(size=12, color='#003399', family='Arial Black')
+            )
+        )
+        
+        st.plotly_chart(fig_cumul, use_container_width=True)
+        
+        st.markdown("---")
+        st.subheader("Analyse des contributions")
+        
+        var_importante_cp1 = contrib_df.nlargest(3, 'Contribution CP1 (%)')[['Variable', 'Contribution CP1 (%)']]
+        var_importante_cp2 = contrib_df.nlargest(3, 'Contribution CP2 (%)')[['Variable', 'Contribution CP2 (%)']]
+        
+        col1, col2 = st.columns(2)
+        
+        with col1:
+            st.write("**Top 3 variables pour CP1:**")
+            for _, row in var_importante_cp1.iterrows():
+                st.write(f"- {row['Variable']}: {row['Contribution CP1 (%)']:.1f}%")
+        
+        with col2:
+            st.write("**Top 3 variables pour CP2:**")
+            for _, row in var_importante_cp2.iterrows():
+                st.write(f"- {row['Variable']}: {row['Contribution CP2 (%)']:.1f}%")
     
     # ONGLET 6: CLASSEMENTS
     with tab6:
@@ -988,14 +1294,195 @@ def main():
             'Equipe': teams_names,
             'CP1': X_pca[:, 0],
             'CP2': X_pca[:, 1],
+            'Matchs': df['M.'].values,
+            'Victoires': df['W'].values,
             'Points': df['Pt.'].values,
-            'Victoires': df['W'].values
+            'Dif': df['Dif'].values,
+            'Taux_Victoire': df['Taux_Victoire'].values
         })
         
-        st.subheader("Top 20 équipes par CP1")
-        top_20 = classement_df.nlargest(20, 'CP1')
-        st.dataframe(top_20.round(3), use_container_width=True)
+        classement_df['Rang_CP1'] = classement_df['CP1'].rank(ascending=False).astype(int)
+        classement_df['Rang_CP2'] = classement_df['CP2'].rank(ascending=False).astype(int)
+        
+        st.markdown("---")
+        type_classement = st.radio(
+            "Sélectionner le type de classement",
+            ["Par CP1 (Performance globale)", "Par CP2", "Par Points totaux", "Par Taux de victoire"],
+            horizontal=True
+        )
+        
+        nb_equipes = st.slider("Nombre d'équipes à afficher", 10, len(teams_names), 20, step=5)
+        
+        st.markdown("---")
+        if type_classement == "Par CP1 (Performance globale)":
+            classement_affiche = classement_df.nlargest(nb_equipes, 'CP1')[
+                ['Rang_CP1', 'Equipe', 'CP1', 'CP2', 'Points', 'Victoires', 'Matchs', 'Taux_Victoire']
+            ]
+            titre_classement = f"Top {nb_equipes} - Classement par CP1"
+        
+        elif type_classement == "Par CP2":
+            classement_affiche = classement_df.nlargest(nb_equipes, 'CP2')[
+                ['Rang_CP2', 'Equipe', 'CP2', 'CP1', 'Points', 'Victoires', 'Matchs', 'Taux_Victoire']
+            ]
+            titre_classement = f"Top {nb_equipes} - Classement par CP2"
+        
+        elif type_classement == "Par Points totaux":
+            classement_affiche = classement_df.nlargest(nb_equipes, 'Points')[
+                ['Equipe', 'Points', 'CP1', 'CP2', 'Victoires', 'Matchs', 'Taux_Victoire']
+            ]
+            classement_affiche.insert(0, 'Rang', range(1, len(classement_affiche) + 1))
+            titre_classement = f"Top {nb_equipes} - Classement par Points"
+        
+        else:
+            classement_affiche = classement_df.nlargest(nb_equipes, 'Taux_Victoire')[
+                ['Equipe', 'Taux_Victoire', 'CP1', 'CP2', 'Points', 'Victoires', 'Matchs']
+            ]
+            classement_affiche.insert(0, 'Rang', range(1, len(classement_affiche) + 1))
+            titre_classement = f"Top {nb_equipes} - Classement par Taux de victoire"
+        
+        st.subheader(titre_classement)
+        st.dataframe(
+            classement_affiche.round(3).reset_index(drop=True),
+            use_container_width=True,
+            height=600
+        )
+        
+        st.markdown("---")
+        st.subheader("Comparaison graphique")
+        
+        col1, col2 = st.columns([1, 2])
+        
+        with col1:
+            equipes_comparaison = st.multiselect(
+                "Sélectionner des équipes à comparer",
+                sorted(teams_names),
+                default=sorted(teams_names)[:5]
+            )
+        
+        with col2:
+            if equipes_comparaison:
+                data_comparaison = classement_df[classement_df['Equipe'].isin(equipes_comparaison)]
+                
+                fig_comp = go.Figure()
+                fig_comp.add_trace(go.Bar(
+                    name='CP1',
+                    x=data_comparaison['Equipe'],
+                    y=data_comparaison['CP1'],
+                    marker=dict(
+                        color='#0066cc',
+                        line=dict(color='#003399', width=2),
+                        pattern=dict(shape="/")
+                    ),
+                    text=data_comparaison['CP1'].round(2),
+                    textposition='outside',
+                    textfont=dict(size=11, color='#000000', family='Arial Black'),
+                    hovertemplate='<b>%{x}</b><br>CP1: %{y:.3f}<extra></extra>'
+                ))
+                fig_comp.add_trace(go.Bar(
+                    name='CP2',
+                    x=data_comparaison['Equipe'],
+                    y=data_comparaison['CP2'],
+                    marker=dict(
+                        color='#ff9933',
+                        line=dict(color='#ff6600', width=2),
+                        pattern=dict(shape="\\")
+                    ),
+                    text=data_comparaison['CP2'].round(2),
+                    textposition='outside',
+                    textfont=dict(size=11, color='#000000', family='Arial Black'),
+                    hovertemplate='<b>%{x}</b><br>CP2: %{y:.3f}<extra></extra>'
+                ))
+                
+                fig_comp.update_layout(
+                    title=dict(
+                        text="Comparaison CP1 vs CP2",
+                        font=dict(size=16, color='#003399', family='Arial Black')
+                    ),
+                    xaxis_title="Équipes",
+                    yaxis_title="Score",
+                    barmode='group',
+                    height=450,
+                    xaxis_tickangle=-45,
+                    plot_bgcolor='rgba(255, 255, 255, 0.97)',
+                    paper_bgcolor='rgba(255, 255, 255, 0.97)',
+                    font=dict(color='#000000', size=12, family='Arial'),
+                    legend=dict(
+                        bgcolor='rgba(255, 255, 255, 0.97)',
+                        bordercolor='#003399',
+                        borderwidth=2,
+                        font=dict(size=11, color='#000000', family='Arial Black')
+                    ),
+                    xaxis=dict(
+                        gridcolor='rgba(200, 200, 200, 0.5)',
+                        title_font=dict(size=12, color='#003399', family='Arial Black')
+                    ),
+                    yaxis=dict(
+                        gridcolor='rgba(200, 200, 200, 0.5)',
+                        title_font=dict(size=12, color='#003399', family='Arial Black')
+                    )
+                )
+                
+                st.plotly_chart(fig_comp, use_container_width=True)
+        
+        st.markdown("---")
+        st.subheader("Statistiques du classement")
+        
+        col1, col2, col3, col4 = st.columns(4)
+        
+        with col1:
+            st.metric("Équipe leader CP1", classement_df.nlargest(1, 'CP1')['Equipe'].values[0])
+        with col2:
+            st.metric("Équipe leader CP2", classement_df.nlargest(1, 'CP2')['Equipe'].values[0])
+        with col3:
+            st.metric("Plus de points", classement_df.nlargest(1, 'Points')['Equipe'].values[0])
+        with col4:
+            st.metric("Meilleur taux victoire", classement_df.nlargest(1, 'Taux_Victoire')['Equipe'].values[0])
+        
+        st.markdown("---")
+        st.subheader("Export des résultats")
+        
+        col1, col2 = st.columns(2)
+        
+        with col1:
+            csv_classement = classement_df.to_csv(index=False).encode('utf-8')
+            st.download_button(
+                label="Télécharger le classement complet (CSV)",
+                data=csv_classement,
+                file_name='classement_acp_ucl.csv',
+                mime='text/csv'
+            )
+        
+        with col2:
+            csv_top = classement_affiche.to_csv(index=False).encode('utf-8')
+            st.download_button(
+                label=f"Télécharger le Top {nb_equipes} (CSV)",
+                data=csv_top,
+                file_name=f'top_{nb_equipes}_ucl.csv',
+                mime='text/csv'
+            )
+    
+    # FOOTER
+    st.markdown("---")
+    
+    st.markdown('<div class="footer">', unsafe_allow_html=True)
+    
+    col1, col2, col3 = st.columns(3)
+    
+    with col1:
+        st.markdown("**Analyse en Composantes Principales**")
+        st.caption("UEFA Champions League 1955-2023")
+    
+    with col2:
+        st.markdown("**Données**")
+        st.caption(f"{len(df)} équipes analysées")
+    
+    with col3:
+        st.markdown("**Variables**")
+        st.caption(f"{len(variables_selectionnees)} variables sélectionnées")
+    
+    st.markdown('</div>', unsafe_allow_html=True)
 
 # POINT D'ENTRÉE
 if __name__ == "__main__":
+
     main()
