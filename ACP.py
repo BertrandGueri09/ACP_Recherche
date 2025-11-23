@@ -26,14 +26,14 @@ st.set_page_config(
 )
 
 # URL de l'image Postimages
-postimg_url = "//https://postimages.org/signup/50cd3689b23a439a"
+postimg_url = "https://i.postimg.cc/vTp3B3LV/IMG-6442.jpg"
 
 # Style CSS personnalisé avec image de fond du trophée Champions League
 st.markdown(f"""
     <style>
     /* Image de fond - Trophée Champions League */
     .stApp {{
-        background: linear-gradient(rgba(10, 25, 47, 0.70), rgba(18, 35, 60, 0.75)),
+        background: linear-gradient(rgba(10, 25, 47, 0.85), rgba(18, 35, 60, 0.88)),
                     url('{postimg_url}');
         background-size: cover;
         background-position: center;
@@ -1488,6 +1488,3 @@ def main():
 # POINT D'ENTRÉE
 if __name__ == "__main__":
     main()
-
-
-
